@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Article Detail</title>
+    <!-- Include any necessary CSS for styling -->
+</head>
+<body>
+    <div class="container">
+        <h2>{{ article.title }}</h2>
+        <p>Author: {{ article.author.username }}</p>
+        <p>Publication Date: {{ article.publication_date }}</p>
+        <div class="article-content">
+            {{ article.content | safe }}
+        </div>
+        {% if article.image %}
+    <img src="{{ url_for('images', filename=article.image) }}" alt="{{ article.title }} Image">
+{% endif %}
+
+{% if article.document %}
+    <a href="{{ url_for('documents', filename=article.document) }}" target="_blank">Download Document</a>
+{% endif %}
+
+    </div>
+</body>
+</html>
